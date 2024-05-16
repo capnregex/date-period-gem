@@ -5,7 +5,12 @@ RSpec.describe Date::Period do
     expect(Date::Period::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  describe "Date" do
+    let(:sunday) { Date.new(2024,5,12) }
+    let(:wednesday) { Date.new(2024,5,15) }
+
+    it "includes active support foo" do
+      expect(wednesday.beginning_of_week(:sunday)).to eq(sunday)
+    end
   end
 end
