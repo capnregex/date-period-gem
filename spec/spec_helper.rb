@@ -2,6 +2,10 @@
 
 require "date/period"
 
+Dir.glob('support/**/*.rb', base: __dir__).each do |file|
+  require_relative file
+end
+
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"

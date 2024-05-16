@@ -1,5 +1,5 @@
 RSpec.describe Date::Period::Week do
-  let(:today) { Time.zone.today }
+  let(:today) { Date.current }
   let(:date) { Date.new(2020, 1, 7) }
   let(:week) { Date::Period.new(:week, date) }
   let(:week_starts) { Date.new(2020, 1, 5) }

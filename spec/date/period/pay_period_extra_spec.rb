@@ -17,8 +17,8 @@ RSpec.describe Date::Period::PayPeriod do
   context "instance" do
     subject { pay_period }
 
-    let(:origin) { PayPeriod.origin }
-    let(:now) { Time.zone.now }
+    let(:origin) { Date::Period::PayPeriod.origin }
+    let(:now) { Time.now }
     let(:today) { now.to_date }
     let(:pay_period) { Date.pay_period(today) }
     let(:sunday) { Date.pay_period(pay_period.start_date) }
@@ -54,10 +54,11 @@ RSpec.describe Date::Period::PayPeriod do
   # rubocop:disable RSpec/ExpectActual
   # expecting a literal date string makes these specs more readable
   describe ".number" do
-    it { expect("2021/1/2").to be_in_pay_period(26).of_year(2020) }
-    it { expect("2021/1/3").to be_in_pay_period(1) }
-    it { expect("2021/7/4").to be_in_pay_period(14) }
-    it { expect("2021/7/31").to be_in_pay_period(15) }
+    let(:date) { |example| example.description }
+    it("2021/1/2") { expect(date).to be_in_pay_period(26).of_year(2020) }
+    it("2021/1/3") { expect(date).to be_in_pay_period(1) }
+    it("2021/7/4") { expect(date).to be_in_pay_period(14) }
+    it("2021/7/31") { expect(date).to be_in_pay_period(15) }
   end
   # rubocop:enable RSpec/ExpectActual
 end

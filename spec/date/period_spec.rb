@@ -13,8 +13,7 @@ RSpec.describe Date::Period do
       expect(wednesday.beginning_of_week(:sunday)).to eq(sunday)
     end
   end
-end
-RSpec.describe Date::Period do
+
   describe "#find" do
     it { expect(Date::Period.find(nil)).to eq(Date::Period::Month) }
     it { expect(Date::Period.find("foo")).to eq(Date::Period::Month) }
@@ -26,8 +25,8 @@ RSpec.describe Date::Period do
   end
 
   describe "#new" do
-    let(:week) { Date::Period::Week.new(Time.zone.today) }
+    let(:week) { Date::Period::Week.new(Date.current) }
 
-    it { expect(Date::Period.new("week", Time.zone.today)).to eq(week) }
+    it { expect(Date::Period.new("week", Date.current)).to eq(week) }
   end
 end

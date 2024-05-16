@@ -1,8 +1,9 @@
+require_relative "../parse.rb"
 class Date
   module Period
     class Base
       include Comparable
-      include Draper::Decoratable
+      # include Draper::Decoratable
       include Parse
       class_attribute :unit, default: :days
       class_attribute :duration, default: 1
@@ -17,7 +18,7 @@ class Date
       # rubocop:enable Lint/UnusedMethodArgument
 
       def today
-        @today ||= Time.zone.today
+        @today ||= Date.current
       end
 
       def date

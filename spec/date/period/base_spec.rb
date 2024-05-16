@@ -1,5 +1,5 @@
 RSpec.describe Date::Period::Base do
-  let(:today) { Time.zone.today }
+  let(:today) { Date.current }
   let(:date) { Date.new(2020, 1, 7) }
   let(:day) { Date::Period::Base.new(date) }
   let(:prev_date) { Date.new(2020, 1, 6) }

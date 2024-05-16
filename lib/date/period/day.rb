@@ -1,3 +1,5 @@
+require_relative "base"
+
 class Date
   module Period
     class Day < Base
