@@ -11,3 +11,18 @@ class Date
     # Your code goes here...
   end
 end
+class Date
+  module Period
+    extend Period::ClassMethods
+    UNITS = ActiveSupport::HashWithIndifferentAccess.new(
+      day: Period::Day,
+      days: Period::Days,
+      week: Period::Week,
+      pay_period: Period::PayPeriod,
+      month: Period::Month,
+      quarter: Period::Quarter,
+      year: Period::Year,
+      custom: Period::Custom
+    )
+  end
+end

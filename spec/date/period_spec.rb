@@ -14,3 +14,20 @@ RSpec.describe Date::Period do
     end
   end
 end
+RSpec.describe Date::Period do
+  describe "#find" do
+    it { expect(Date::Period.find(nil)).to eq(Date::Period::Month) }
+    it { expect(Date::Period.find("foo")).to eq(Date::Period::Month) }
+    it { expect(Date::Period.find("week")).to eq(Date::Period::Week) }
+    it { expect(Date::Period.find("pay_period")).to eq(Date::Period::PayPeriod) }
+    it { expect(Date::Period.find("month")).to eq(Date::Period::Month) }
+    it { expect(Date::Period.find("quarter")).to eq(Date::Period::Quarter) }
+    it { expect(Date::Period.find("year")).to eq(Date::Period::Year) }
+  end
+
+  describe "#new" do
+    let(:week) { Date::Period::Week.new(Time.zone.today) }
+
+    it { expect(Date::Period.new("week", Time.zone.today)).to eq(week) }
+  end
+end
